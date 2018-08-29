@@ -1,0 +1,9 @@
+{
+    "ServerPort": "8000",
+    "DbHost": "<Host>",
+    "DbPort": "<port>",
+    "DbUser": "<user>",
+    "DbPassword": "<password>",
+    "DbName": "postfix",
+    "AliasTableName": "virtual_aliases"
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Alias Verwaltung</title>
+    <link rel="stylesheet" href="/static/css/bulma.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+        <h1 class="title is-1">Postfix Alias Verwaltung</h1>
+        <div class="level">
+            <div class="level-left">
+                <div class="level-item">
+                    <div>
+                        <form name="search">
+                            <div class="field is-horizontal">
+                                <label class="label">Suche</label>
+                                <div class="control">
+                                    <input class="input is-small" type="email" name="Alias Suche" id="search" onkeyup="searchTable()">
+                                </div>
+                            </div>
+                        </form>
+                        <br>
+                        <table class="table is-narrow" id="aliasTable">
+                            <thead>
+                                <tr>
+                                    <th>Alias</th>
+                                    <th>Email</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{range .AliasList }}
+                                <tr>
+                                    <td>{{.Alias}}</td>
+                                    <td>{{.Email}}</td>
+                                    <td>
+                                        <input type="button" class="button is-danger is-outlined is-small" onClick="location.href='/delete?alias={{.Alias}}&email={{.Email}}' "
+                                            value='Delete'>
+                                    </td>
+                                </tr>
+                                {{end}}
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br>
+
+        <div class="level">
+            <div class="level-left">
+                <div class="level-item">
+                    <div>
+                        <h5 class="title is-5 is-spaced">Neuen Alias hinzufügen:</h5>
+                        <form action="/create" name="createAliasForm">
+                            <div class="field">
+                                <label class=label>Alias</label>
+                                <div class="control">
+                                    <input class="input" type="email" placeholder="alias@meteor-qs.de" name="alias">
+                                </div>
+                                <div class="field">
+                                    <label class=label>Email</label>
+                                    <div class="control">
+                                        <input class="input" type="email" placeholder="email@meteor-qs.de" name="email">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field ">
+                                <div class="control">
+                                    <!--<input class="button" type="submit" value="Create"></input>-->
+                                    <input class="button" type="submit" onsubmit="return validateForm()" value="Create"></input>
+                                </div>
+                            </div>
+                            {{if .StatusMessage}}
+                            <div class="notification is-info" id="notification">
+                                {{.StatusMessage}}
+                            </div>
+                            {{end}}
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/static/js/script.js "></script>
+    </div>
+
+
+</body>
+
+</html>
