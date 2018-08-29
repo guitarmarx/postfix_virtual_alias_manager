@@ -2,7 +2,7 @@
 ## Description
 View, create, delete and search aliases in your postfix alias database
 
-![Alt text](/images/browser.jpg?raw=true)
+![Alt text](/images/browser.png?raw=true)
 
 ## Build
 
